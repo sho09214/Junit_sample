@@ -1,7 +1,9 @@
 package com.example.Junit_sample.jp.sample;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -40,5 +42,18 @@ class SampleForParamTest {
         sut = new SampleForParam();
 
         assertFalse(sut.checkEmpty(str));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "80,80,Excellent",
+            "79,80,Very Good",
+            "80,79,Very Good",
+            "79,79,Good"})
+    void evaluate(int x, int y, String expected) {
+        sut = new SampleForParam();
+
+        String actual = sut.evaluate(x, y);
+        assertEquals(expected, actual);
     }
 }

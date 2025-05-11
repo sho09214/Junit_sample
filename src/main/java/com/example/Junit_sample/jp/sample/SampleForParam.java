@@ -13,4 +13,14 @@ public class SampleForParam {
     public boolean checkEmpty(String str) {
         return str.isEmpty();
     }
+
+    public String evaluate(int mathScore, int englishScore) {
+        if(mathScore >= 80 && englishScore >= 80) {
+            return "Excellent";
+        } else if (mathScore >= 80 || englishScore >= 80) {
+            return "Very Good";
+        } else {
+            return "Good";
+        }
+    }
 }
